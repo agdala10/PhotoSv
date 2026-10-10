@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhotoSv — Editor de imágenes open-source para Windows</title>
+<meta name="description" content="PhotoSv: editor de imágenes nativo, rápido y open-source para Windows. Descarga el instalador.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  :root { --psv-accent: #4da3ff; --psv-bg: #0d1117; }
+  body { background: var(--psv-bg); }
+  .grid-bg {
+    background-image: linear-gradient(rgba(77,163,255,.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(77,163,255,.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 75%);
+  }
+  .hero-glow { text-shadow: 0 0 42px rgba(77,163,255,.55); }
+  .btn-download {
+    box-shadow: 0 0 24px rgba(77,163,255,.45);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn-download:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 44px rgba(77,163,255,.7); }
+  .shot {
+    border: 1px solid rgba(77,163,255,.25);
+    box-shadow: 0 18px 80px rgba(0,0,0,.65), 0 0 60px rgba(77,163,255,.12);
+    transition: transform .35s ease;
+  }
+  .shot:hover { transform: scale(1.015); }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .feat-card { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.09); transition: border-color .25s ease, transform .25s ease; }
+  .feat-card:hover { border-color: rgba(77,163,255,.5); transform: translateY(-4px); }
+  code.install { background: #161b22; }
+</style>
+</head>
+<body>
+<div class="grid-bg position-fixed top-0 start-0 w-100 h-100 z-n1"></div>
+
+<nav class="navbar navbar-expand-lg border-bottom border-secondary-subtle">
+  <div class="container">
+    <span class="navbar-brand fw-bold">PhotoSv <span class="badge text-bg-primary ms-1">v0.3.0</span></span>
+    <span class="navbar-text d-none d-md-inline">Editor de imágenes open-source para Windows</span>
+  </div>
+</nav>
+
+<header class="container text-center py-5">
+  <h1 class="display-4 fw-bold hero-glow reveal">PhotoSv</h1>
+  <p class="lead text-secondary reveal">Rápido, nativo y open-source. Edita PSD, PNG, JPG y más — sin suscripciones.</p>
+  <div class="d-flex flex-wrap gap-3 justify-content-center mt-4 reveal">
+    <a class="btn btn-primary btn-lg btn-download" href="https://github.com/agdala10/PhotoSv/releases/download/v0.3.0/PhotoSv-0.3.0-windows-x64-portable.zip">⬇ Descargar para Windows</a>
+    <a class="btn btn-outline-light btn-lg" href="https://github.com/agdala10/PhotoSv">Ver en GitHub</a>
+  </div>
+  <p class="text-secondary mt-3 small reveal">Windows 10/11 · 64 bits · ZIP portable con instalador (<code>install.cmd</code>)</p>
+</header>
+
+<main class="container pb-5">
+  <section class="reveal">
+    <img src="gallery-screenshot.png" class="img-fluid rounded shot" alt="PhotoSv maximizado sin franjas negras">
+    <p class="text-center text-secondary mt-2 small">PhotoSv 0.3.0 — interfaz propia, sin bordes ni franjas.</p>
+  </section>
+
+  <section class="row g-4 mt-4">
+    <div class="col-md-4 reveal"><div class="card feat-card h-100 p-3"><h5>🖼 Comparable a Photoshop</h5><p class="text-secondary mb-0">Capas, máscaras, ajustes, pinceles y modos de fusión. Paridad de menús y atajos.</p></div></div>
+    <div class="col-md-4 reveal"><div class="card feat-card h-100 p-3"><h5>⚡ Nativo y rápido</h5><p class="text-secondary mb-0">Rust + GPU, procesamiento por teselas en paralelo. Sin Electron, sin esperas.</p></div></div>
+    <div class="col-md-4 reveal"><div class="card feat-card h-100 p-3"><h5>🤖 Automatizable</h5><p class="text-secondary mb-0">CLI headless, canal de control JSON y servidor MCP: cada acción es un comando.</p></div></div>
+  </section>
+
+  <section class="mt-5 reveal">
+    <h3>Instalación</h3>
+    <ol>
+      <li>Descarga el <a href="https://github.com/agdala10/PhotoSv/releases/download/v0.3.0/PhotoSv-0.3.0-windows-x64-portable.zip">ZIP portable</a> y descomprímelo donde quieras.</li>
+      <li>Ejecuta <code class="install px-1 rounded">install.cmd</code> para instalarlo en tu cuenta (accesos directos en el menú Inicio y el escritorio, sin permisos de administrador).</li>
+      <li>O usa <code class="install px-1 rounded">photosv.exe</code> directo en modo portable (con <code class="install px-1 rounded">portable.txt</code> al lado).</li>
+    </ol>
+  </section>
+</main>
+
+<footer class="border-top border-secondary-subtle py-4 text-center text-secondary">
+  <div class="container">
+    <p class="mb-1">Powered by Agdala 2026 · <a href="mailto:agdala.sv@gmail.com">agdala.sv@gmail.com</a></p>
+    <p class="mb-0 small"><a href="https://github.com/agdala10/PhotoSv">GitHub</a> · Licencias MIT/Apache-2.0</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
